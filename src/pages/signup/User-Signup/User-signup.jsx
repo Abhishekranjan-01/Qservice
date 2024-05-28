@@ -1,5 +1,14 @@
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import Cities from "./Form-components/Cities";
+import FirstName from "./Form-components/First-name";
+import LastName from "./Form-components/Last-name";
+import Gender from "./Form-components/Gender";
+import Email from "./Form-components/Email";
+import Country from "./Form-components/Country";
+import StreetAddress from "./Form-components/Street-address";
+import State from "./Form-components/State";
+import Pincode from "./Form-components/Pincode";
 
 export default function UserSignup() {
   return (
@@ -14,62 +23,18 @@ export default function UserSignup() {
           </p>
           <form>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <input
-                type="text"
-                placeholder="First name"
-                className="border p-2 rounded w-full"
-              />
-              <input
-                type="text"
-                placeholder="Last name"
-                className="border p-2 rounded w-full"
-              />
+              <FirstName />
+              <LastName />
             </div>
-            <div className=" gap-4 mb-4">
-              <select className="border p-2 rounded w-full">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="border p-2 rounded w-full"
-              />
-            </div>
-            <div className="mb-4">
-              <select className="border p-2 rounded w-full" disabled>
-                <option>India</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <input
-                type="text"
-                placeholder="Street address"
-                className="border p-2 rounded w-full"
-              />
-            </div>
+            <Gender />
+            <Email />
+            <Country />
+            <StreetAddress />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <input
-                type="text"
-                placeholder="City"
-                className="border p-2 rounded w-full"
-              />
-              <input
-                type="text"
-                placeholder="State "
-                value={"Bihar"}
-                disabled
-                className="border p-2 rounded w-full"
-              />
-              <input
-                type="text"
-                placeholder="pincode / Postal code"
-                className="border p-2 rounded w-full"
-                minLength={6}
-                maxLength={6}
-              />
+              <State />
+              <Cities />
+
+              <Pincode />
             </div>
 
             <PhoneInput
