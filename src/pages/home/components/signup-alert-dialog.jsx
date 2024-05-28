@@ -24,17 +24,21 @@ export function Signup() {
             Signup
           </AlertDialogTitle>
         </AlertDialogHeader>
-        <Link
-          to={"/user-signup"}
-          className="self-center sm:min-w-[450px] text-white !text-center bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5  inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 me-2  !mx-auto "
-        >
-          <span className="w-fit mx-auto">Signup as User</span>
+
+        <Link to={"/user-signup"} className="self-center  me-2  !mx-auto">
+          <AlertDialogCancel className="sm:min-w-[450px] bg-[#050708] hover:bg-[#050708]/90 rounded-lg">
+            <span className="w-fit mx-auto  text-white !text-center">
+              Signup as User
+            </span>
+          </AlertDialogCancel>
         </Link>
-        <Link
-          to={"/partner-signup"}
-          className="self-center sm:min-w-[450px] text-white !text-center bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5  inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 me-2  !mx-auto "
-        >
-          <span className="w-fit mx-auto">Signup as Partner</span>
+
+        <Link to={"/partner-signup"} className="self-center  me-2  !mx-auto">
+          <AlertDialogCancel className="sm:min-w-[450px] bg-[#050708] hover:bg-[#050708]/90 rounded-lg">
+            <span className="w-fit mx-auto  text-white !text-center">
+              Signup as Partner
+            </span>
+          </AlertDialogCancel>
         </Link>
 
         <AlertDialogFooter>
