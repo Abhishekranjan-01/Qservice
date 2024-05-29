@@ -9,8 +9,12 @@ import Country from "./Form-components/Country";
 import StreetAddress from "./Form-components/Street-address";
 import State from "./Form-components/State";
 import Pincode from "./Form-components/Pincode";
+import DateOfBirth from "./Form-components/Date-of-birth";
+import { useDispatch } from "react-redux";
+import { addPhone } from "@/features/forms/userSignup/userSignupSlice";
 
 export default function UserSignup() {
+  const dispatch = useDispatch();
   return (
     <div className="bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto p-4">
@@ -21,12 +25,20 @@ export default function UserSignup() {
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             Use a present address where you can receive services.
           </p>
-          <form>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <FirstName />
               <LastName />
             </div>
-            <Gender />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 items-center">
+              <Gender />
+              <DateOfBirth />
+            </div>
+
             <Email />
             <Country />
             <StreetAddress />
@@ -46,7 +58,7 @@ export default function UserSignup() {
               placeholder=""
               className="mb-4 w-1/2 sm:w-full"
               // value={this.state.phone}
-              // onChange={(phone) => this.setState({ phone })}
+              onChange={(phone) => dispatch(addPhone(phone))}
             />
 
             <button

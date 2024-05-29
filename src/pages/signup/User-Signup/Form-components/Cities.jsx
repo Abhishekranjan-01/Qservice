@@ -11,6 +11,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CommandList } from "cmdk";
+import { useDispatch } from "react-redux";
+import { addCity } from "@/features/forms/userSignup/userSignupSlice";
 
 const frameworks = [
   {
@@ -22,9 +24,10 @@ const frameworks = [
     label: "Gaya",
   },
 ];
-export default function Cities() {
+export default function Cities({ setCity }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const dispatch = useDispatch();
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -53,6 +56,9 @@ export default function Cities() {
                   value={framework.value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
+                    dispatch(
+                      addCity(currentValue === value ? "" : currentValue)
+                    );
                     setOpen(false);
                   }}
                 >
