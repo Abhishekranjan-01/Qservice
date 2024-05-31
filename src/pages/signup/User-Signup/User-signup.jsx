@@ -48,6 +48,7 @@ export default function UserSignup() {
   const { city } = useSelector((store) => store.userSignupSlice[7]);
   const { pincode } = useSelector((store) => store.userSignupSlice[8]);
   const { phone } = useSelector((store) => store.userSignupSlice[9]);
+  const { phoneValidated } = useSelector((store) => store.userSignupSlice[9]);
   console.log("gender:\t", gender);
   return (
     <div className="bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
@@ -88,7 +89,7 @@ export default function UserSignup() {
               dispatch(validatePhone(checkPhoneValidation(phone)));
             }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <FirstName />
               <LastName />
             </div>
@@ -107,22 +108,29 @@ export default function UserSignup() {
               <Pincode />
             </div>
 
-            <PhoneInput
-              type="tel"
-              role="phone number"
-              country={"in" || 91}
-              onlyCountries={["in"]}
-              preferredCountries={["in"]}
-              placeholder=""
-              inputProps={{
-                name: "phone",
-                required: true,
-                autoFocus: true,
-              }}
-              className="mb-4 w-1/2 sm:w-full"
-              // value={this.state.phone}
-              onChange={(phone) => dispatch(addPhone(phone))}
-            />
+            <div className="relative">
+              <PhoneInput
+                type="tel"
+                role="phone number"
+                country={"in" || 91}
+                onlyCountries={["in"]}
+                preferredCountries={["in"]}
+                placeholder=""
+                inputProps={{
+                  name: "phone",
+                  required: true,
+                  autoFocus: true,
+                }}
+                className="mb-6 w-1/2 sm:w-full"
+                // value={this.state.phone}
+                onChange={(phone) => dispatch(addPhone(phone))}
+              />
+              {!phoneValidated && (
+                <h4 className="absolute top-9 text-xs font-medium text-red-600">
+                  Please enter phone in correct pattern
+                </h4>
+              )}
+            </div>
 
             <button
               type="submit"
