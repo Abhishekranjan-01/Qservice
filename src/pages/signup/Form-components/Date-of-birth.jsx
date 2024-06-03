@@ -1,9 +1,12 @@
 import { addDateOfBirth } from "@/features/forms/userSignup/userSignupSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 
-export default function DateOfBirth() {
+export default function DateOfBirth({ register, errors }) {
   const dispatch = useDispatch();
-  const { ageValidated } = useSelector((store) => store.userSignupSlice[2]);
+  const { dateOfBirth, ageValidated } = useSelector(
+    (store) => store.userSignupSlice[2]
+  );
   return (
     <div className="relative ">
       <div className="flex flex-row items-center gap-4">
@@ -11,6 +14,8 @@ export default function DateOfBirth() {
           Date of birth:
         </label>
         <input
+          value={dateOfBirth}
+          {...register("dateOfBirth")}
           type="date"
           name="date-of-birth"
           required
@@ -18,9 +23,9 @@ export default function DateOfBirth() {
           className="border border-gray-300 rounded-md h-full px-1"
         />
       </div>
-      {!ageValidated && (
-        <h4 className="absolute top-6 text-xs font-medium text-red-600">
-          *Below 18 found !!
+      {errors.dateOfBirth && (
+        <h4 className="absolute top-7 text-xs font-medium text-red-600">
+          {errors.dateOfBirth.message}
         </h4>
       )}
     </div>

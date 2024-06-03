@@ -1,9 +1,9 @@
 import { addGender } from "@/features/forms/userSignup/userSignupSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Gender() {
+export default function Gender({ register, errors }) {
   const dispatch = useDispatch();
-  const { genderValidated } = useSelector((store) => store.userSignupSlice[1]);
+  const { gender } = useSelector((store) => store.userSignupSlice[1]);
 
   return (
     <div className="relative ">
@@ -18,9 +18,11 @@ export default function Gender() {
               Male
             </label>
             <input
+              {...register("gender")}
               aria-label="gender"
               type="radio"
               name="gender"
+              required
               value={"male"}
               id="male"
               onChange={(e) => dispatch(addGender(e.target.value))}
@@ -32,6 +34,7 @@ export default function Gender() {
               Female{" "}
             </label>
             <input
+              {...register("gender")}
               aria-label="gender"
               type="radio"
               name="gender"
@@ -46,6 +49,7 @@ export default function Gender() {
               Others
             </label>
             <input
+              {...register("gender")}
               aria-label="gender"
               type="radio"
               name="gender"
@@ -56,9 +60,9 @@ export default function Gender() {
           </div>
         </div>
       </div>
-      {!genderValidated && (
+      {errors.gender && (
         <h4 className="absolute top-5 text-xs font-medium text-red-600">
-          *Gender is required
+          {errors.gender.message}
         </h4>
       )}
     </div>

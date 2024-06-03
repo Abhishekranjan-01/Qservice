@@ -12,28 +12,21 @@ import {
 } from "@/components/ui/popover";
 import { CommandList } from "cmdk";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addCity,
-  validateCity,
-} from "@/features/forms/userSignup/userSignupSlice";
 
 const frameworks = [
   {
-    value: "patna",
-    label: "Patna",
+    value: "Electrician / Electronics",
+    label: "Electrician / Electronics",
   },
   {
-    value: "gaya",
-    label: "Gaya",
+    value: "plumber",
+    label: "Plumber",
   },
 ];
-export default function Cities({}) {
+export default function SelectService({}) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const dispatch = useDispatch();
-  const { city, cityValidated } = useSelector(
-    (store) => store.userSignupSlice[7]
-  );
 
   return (
     <div className="relative ">
@@ -47,7 +40,7 @@ export default function Cities({}) {
           >
             {value
               ? frameworks.find((framework) => framework.value === value)?.label
-              : "Select city"}
+              : "Select Service"}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
@@ -62,10 +55,10 @@ export default function Cities({}) {
                     value={framework.value}
                     onSelect={(currentValue) => {
                       setValue(currentValue === value ? "" : currentValue);
-                      dispatch(
-                        addCity(currentValue === value ? "" : currentValue)
-                      );
-                      dispatch(validateCity(true));
+                      // dispatch(
+                      //   addCity(currentValue === value ? "" : currentValue)
+                      // );
+                      // dispatch(validateCity(true));
                       setOpen(false);
                     }}
                   >
@@ -83,11 +76,11 @@ export default function Cities({}) {
           </Command>
         </PopoverContent>
       </Popover>
-      {!cityValidated && (
+      {/* {!cityValidated && (
         <h4 className="absolute top-10 text-xs font-medium text-red-600">
           *City is required
         </h4>
-      )}
+      )} */}
     </div>
   );
 }

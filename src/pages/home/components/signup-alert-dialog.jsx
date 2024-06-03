@@ -33,7 +33,10 @@ export function Signup() {
           </AlertDialogCancel>
         </Link>
 
-        <Link to={"/partner-signup"} className="self-center  me-2  !mx-auto">
+        <Link
+          to={"/partner-signup/basic+information"}
+          className="self-center  me-2  !mx-auto"
+        >
           <AlertDialogCancel className="sm:min-w-[450px] bg-[#050708] hover:bg-[#050708]/90 rounded-lg">
             <span className="w-fit mx-auto  text-white !text-center">
               Signup as Partner

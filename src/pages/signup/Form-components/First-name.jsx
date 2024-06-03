@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addFirstName } from "@/features/forms/userSignup/userSignupSlice";
-export default function FirstName() {
-  const { firstNameValidated } = useSelector(
-    (store) => store.userSignupSlice[0].name
-  );
+export default function FirstName({ register, errors }) {
+  const { firstName } = useSelector((store) => store.userSignupSlice[0].name);
   const dispatch = useDispatch();
 
   return (
     <div className="relative ">
       <input
+        value={firstName}
+        {...register("firstName")}
         onChange={(e) => {
           dispatch(addFirstName(e.target.value));
         }}
@@ -17,9 +17,9 @@ export default function FirstName() {
         required
         className="border p-2 rounded w-full"
       />
-      {!firstNameValidated && (
+      {errors.firstName && (
         <h4 className="absolute top-10 text-xs font-medium text-red-600">
-          *First name is required
+          {errors.firstName.message}
         </h4>
       )}
     </div>
